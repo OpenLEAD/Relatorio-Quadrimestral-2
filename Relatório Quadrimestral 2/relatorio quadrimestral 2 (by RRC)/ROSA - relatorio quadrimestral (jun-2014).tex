@@ -1,0 +1,76 @@
+%-----------------------------------------------------------------------
+%
+%   UFRJ  - Universidade Federal do Rio de Janeiro
+%   COPPE - Coordena��o dos Programas de P�s-gradua��o em Engenharia
+%   PEE   - Programa de Engenharia El�trica
+%
+%
+%   Projeto ROSA - Rob� para opera��o de stoplogs alagados
+%
+%   Relat�rio quadrimestral #2
+%   Per�odo: Fev/2014 a Jun/2014
+%
+%                                                        15/jun/14, Rio
+%                                                        Ramon R. Costa
+%----------------------------------------------------------------------
+\documentclass[a4paper,11pt,openany,brazilian,version=last,draft=false]{article}
+\usepackage{../macros/mybook}
+\usepackage{graphicx}         %pacote para incluir figuras tipo eps
+\usepackage{xspace}
+\usepackage{pst-all,pst-poly}  %PSTricks
+\usepackage{psfrag}
+\usepackage{calc}
+\usepackage{multicol}
+%\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+\usepackage{geometry}
+
+\input{../macros/commands}
+\input{../macros/a4size}
+
+\input{../macros/macros-ROSA}
+
+\begin{document}
+%---------------------------------------------------------------------
+\include{00_frontpage}
+
+%---------------------------------------------------------------------
+\tableofcontents
+
+\newpage%
+%---------------------------------------------------------------------
+\section{Identificação}
+
+\input{../identificacao/identificacao}
+
+\newpage%
+%---------------------------------------------------------------------
+\section{Equipe executora}
+
+\input{../equipe/equipe}
+
+%---------------------------------------------------------------------
+\include{01_Cronograma}
+\include{02_Financeiro}
+\include{03_Calculos_Modelagens}
+\include{04_Resultados_Alcancados}
+\include{05_Metodologia}
+\include{06_Reunioes}
+\include{07_Viagens}
+\include{08_Outros}
+\include{Anexo_I}
+
+%\newpage%
+%---------------------------------------------------------------------
+%%% \section{Minutas}
+%%%
+%%% \input{../minutas/minuta-de-reuniao(25-out-2013)} \newpage%
+%%% \input{../minutas/minuta-de-reuniao(01-nov-2013)} \newpage%
+
+%---------------------------------------------------------------------
+\fim
+
+%---------------------------------------------------------------------
+\end{document}
