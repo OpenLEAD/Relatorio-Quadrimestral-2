@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Wed Jun 18 11:21:02 PDT 2014
+markTmpDer=true
+builderNum=2
+outputDir=relatorio quadrimestral 2 (by RRC)/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=relatorio quadrimestral 2 (by RRC)
+mainTexFile=ROSA - relatorio quadrimestral (jun-2014).tex
+outputFile=ROSA - relatorio quadrimestral (jun-2014).pdf
+langSpell=
+markDer=true
+srcDir=relatorio quadrimestral 2 (by RRC)/

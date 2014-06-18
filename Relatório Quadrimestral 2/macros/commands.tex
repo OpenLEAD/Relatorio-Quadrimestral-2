@@ -1,0 +1,514 @@
+%----------------------------------------------------------------------
+%
+%   Macros utilizados no LATEX.
+%                                                       Ramon R. Costa
+%                                                       23/jun/94, Rio
+%----------------------------------------------------------------------
+\newcount\m
+\newcount\n
+
+\def\twodigits#1{\ifnum #1<10 0\fi \number#1}
+
+\def\hours{\n=\time \divide\n 60
+    \m=-\n \multiply\m 60 \advance\m \time
+    \twodigits\n:\twodigits\m}
+
+\def\hora{\hours}
+
+\def\data{Rio de Janeiro,\  \number\day\  de \ifcase\month\or
+    janeiro\or
+    fevereiro\or
+    mar\c{c}o\or
+    abril\or
+    maio\or
+    junho\or
+    julho\or
+    agosto\or
+    setembro\or
+    outubro\or
+    novembro\or
+    dezembro\or\fi\  de \number\year}
+
+%----------------------------------------------------------------------
+
+\newcommand{\bl}{\begin{itemize}}           %item point
+\newcommand{\el}{\end{itemize}}
+
+\newcommand{\blista}{
+    \vspace{-1.5ex}
+    \begin{itemize}
+    \renewcommand{\labelitemi}{$\Box$}
+    \setlength {\itemsep}{-0.8mm}
+    \setlength {\parsep} {0mm}
+    }
+
+\newcommand{\elista}{
+    \end{itemize}
+    \vspace{-1ex}
+    }
+
+\newcommand{\bd}{\begin{description}}       %item simples
+\newcommand{\ed}{\end{description}}
+
+\newcommand{\bn}{\begin{enumerate}}     %item numero
+\newcommand{\en}{\end{enumerate}}
+
+\newcommand{\figps}[4]{
+    \begin{figure}[htb]
+    \centerline{
+    \psfig{figure = #4, height = #1cm}
+    }
+    \caption{#2}
+    \label{#3}
+    \end{figure}
+    }
+
+\newcommand{\mfig}[5]{
+    \begin{figure}[htb]
+    \centerline{
+    \psfig{figure=#5, height=#1cm, width=#2cm}
+    }
+    \caption{#3}
+    \label{#4}
+    \end{figure}
+    }
+
+\newcommand{\bvect}{\left(\begin{array}{c} }
+
+\newcommand{\evect}{\end{array}\right)}
+
+\newcommand{\mat}[1]{
+    \left[
+    \begin{array}   % \mat{{cclr} 1&2&3&4 \\ 1&1&1&1}
+        #1
+    \end{array}
+    \right]
+}
+
+\newcommand{\matriz}[1]{    %Latex 2e + amstex
+    \begin{bmatrix}
+        #1
+    \end{bmatrix}
+}
+
+\newcommand{\equ}[2]{                      % \equ{equation}{label}
+  \begin{equation}\label{#2}
+  #1
+  \end{equation}
+}
+
+\newcommand{\dequ}[3]{
+    \addtolength{\arraycolsep}{-1mm}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{equation}
+        \begin{array}{rcl}
+            #1 \nonumber \\
+            #2 \nonumber
+        \end{array}
+        \label{#3}
+    \end{equation}
+    \renewcommand{\arraystretch}{1}
+    \addtolength{\arraycolsep}{1mm}
+}
+
+\newcommand{\tequ}[4]{
+    \addtolength{\arraycolsep}{-1mm}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{equation}
+        \begin{array}{rcl}
+            #1 \nonumber \\
+            #2 \nonumber \\
+            #3 \nonumber
+        \end{array}
+        \label{#4}
+    \end{equation}
+    \renewcommand{\arraystretch}{1}
+    \addtolength{\arraycolsep}{1mm}
+}
+
+\newcommand{\cequ}[4]{
+    %\addtolength{\arraycolsep}{-1mm}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{equation}
+        #1 = \left\{
+        \begin{array}{lcl}
+            #2  \\
+            #3
+        \end{array}
+        \right.
+        \label{#4}
+    \end{equation}
+    \renewcommand{\arraystretch}{1}
+    %\addtolength{\arraycolsep}{1mm}
+}
+
+\newcommand{\eqn}[1]{                      % \equ{equation}{nolabel}
+        \begin{equation}
+        #1
+        \end{equation}
+}
+
+\newcommand{\espacoduplo}{\setlength{\baselineskip}{1.5\baselineskip}}
+\newcommand{\espacosimples}{\setlength{\baselineskip}{.7\baselineskip}}
+
+\newcommand{\mref}[1]{(\ref{#1})}
+
+%----------------------------------------------------------------------
+%
+% Agregado por Fernando.
+%
+
+\newcommand{\cents}{\hbox{\rm\rlap/c}}
+\newcommand{\abs}[1] {\left|#1\right|}
+\newcommand{\norm}[1] {\left|\!\left|#1\right|\!\right|}
+\newcommand{\vvert}{\Vert}       %always translated to \left| or \right|
+
+%\newcount\notenumber
+%\newcommand {\clearnotenumber}{\notenumber=0}
+% \newcommand {\note}{\global\advance\notenumber by 1
+% \footnote{$^{\the\notenumber}$}}
+%\clearnotenumber
+%\indice{variavel}{indice}
+
+\newcommand{\indice}[2]{
+    #1_{\scriptscriptstyle #2}
+}
+
+\newcommand{\espfig}[3]{
+        \begin{figure}[htb]
+        \vspace{#1cm}
+        \caption{{#2}}
+        \label{#3}
+        \end{figure}
+}
+
+\newcommand{\mkfig}[5]{
+    \begin{figure}[htb]
+        \centerline{
+            \psfig{figure=#1.ps,height=#2cm,width=#3cm}
+        }
+        \caption{{#4}}
+        \label{#5}
+    \end{figure}
+}
+
+%derivee partielle (attention se mettre en mode math)
+\newcommand{\dpar}[2]{
+    {\frac {\partial #1}{\partial #2}}
+}
+
+%derivee partielle (attention se mettre en mode math)
+\newcommand{\dnpar}[3]{
+    {\frac {\partial ^{#3}#1}{\partial #2^{#3}}}
+}
+
+%derivee normale (etre en mode math)
+\newcommand{\deriv}[2]{
+    {\frac {d #1}{d #2}}
+}
+
+\newcommand{\derivn}[2]{
+    {\frac {d^{#2}#1}{dt^{#2}}}
+}
+
+%----------------------------------------------------------------------
+%
+% Agregado por Ramon.
+%
+
+\newcommand{\CAO}{\c{C}\~{A}O}
+\newcommand{\cao}{\c{c}\~{a}o}
+
+\newcommand{\COES}{\c{C}\~{O}ES}
+\newcommand{\coes}{\c{c}\~{o}es}
+
+\newcommand{\pee}{Programa de Engenharia El\a'etrica}
+\newcommand{\PEE}{PROGRAMA DE ENGENHARIA EL\a'ETRICA}
+
+\newcommand{\coppe}{Coordena\cao\ dos Programas de P\a'os--Gradua\cao\ em Engenharia}
+\newcommand{\COPPE}{COORDENA\CAO\ DOS PROGRAMAS DE P\a'OS--GRADUA\CAO\ EM ENGENHARIA}
+
+\newcommand{\ct}{Centro de Tecnologia}
+\newcommand{\CT}{CENTRO DE TECNOLOGIA}
+
+\newcommand{\ufrj}{Universidade Federal do Rio de Janeiro}
+\newcommand{\UFRJ}{UNIVERSIDADE FEDERAL DO RIO DE JANEIRO}
+
+\newcommand{\rrc}{Ramon Romankevicius Costa}
+\newcommand{\RRC}{RAMON ROMANKEVICIUS COSTA}
+
+\newcommand{\ceq}{Comiss\~ao de Exame de Qualifica\cao}
+\newcommand{\CEQ}{COMISS\~AO DE EXAME DE QUALIFICA\CAO}
+
+\newcommand{\gscar}{Gru\-po de Si\-mu\-la\-\cao\ e Con\-tro\-le em
+            Auto\-ma\-\cao\ e Ro\-b\a'o\-ti\-ca}
+\newcommand{\GSCAR}{GRUPO DE SIMULA\CAO\ E CONTROLE EM AUTOMA\CAO\ e ROB\a'OTICA}
+
+\newcommand{\rov}{Ro\-b\^o Sub\-ma\-ri\-no de Ope\-ra\-\cao\ Re\-mo\-ta}
+\newcommand{\ROV}{ROB\^O SUBMARINO DE OPERA\CAO\ REMOTA}
+
+\newcommand{\ramon}{
+  \vspace{1.5cm}
+  \hfill
+  \parbox{8cm}{
+    \centering
+    \rule[0mm]{6cm}{0.1mm} \\[3mm]
+    Ramon Romankevicius Costa \\
+  }
+}
+
+\newcommand{\chefe}{
+    \vspace{1.5cm}
+    \hspace{7cm}
+    \parbox{7cm}{
+    \begin{center}
+        \rule[0mm]{6cm}{0.1mm} \\
+        \vspace{3mm}
+        \rrc\\
+        \vspace{3mm}
+        Chefe da \a'Area de Controle \\
+        \pee
+    \end{center}}}
+
+\newcommand{\vice}{
+    \vspace{1.5cm}
+    \hspace{7cm}
+    \parbox{7cm}{
+    \begin{center}
+        \rule[0mm]{6cm}{0.1mm} \\
+        \vspace{3mm}
+        \rrc\\
+        \vspace{3mm}
+        Vice--Coordenador \\
+        \pee
+    \end{center}}}
+
+\newcommand{\coordenador}{
+    \vspace{1.5cm}
+    \hspace{7cm}
+    \parbox{7cm}{
+    \begin{center}
+        \rule[0mm]{6cm}{0.1mm} \\
+        \vspace{3mm}
+        \rrc\\
+        \vspace{3mm}
+        Coordenador \\
+        \pee
+    \end{center}}}
+
+\newcommand{\orientador}{
+    \vspace{1.5cm}
+    \hspace{7cm}
+    \parbox{7cm}{
+    \begin{center}
+        \rule[0mm]{6cm}{0.1mm} \\
+        \vspace{3mm}
+        \rrc\\
+        \vspace{3mm}
+        Orientador
+    \end{center}}}
+
+\newcommand{\liu}{
+    \vspace{1.5cm}
+    \hfill
+    \parbox{8cm}{
+    \begin{center}
+        \rule[0mm]{6cm}{0.1mm} \\
+        \vspace{3mm}
+        Liu Hsu \\
+%        \vspace{3mm}
+%        Chefe do Laborat\'orio de Controle \\
+%        \pee
+    \end{center}}}
+
+\newcommand{\xEndereco}{
+    \vfill
+    \begin{small}
+    \begin{tabbing}
+    Endere\c{c}o :\ \ \= \rrc \\
+        \> COPPE/UFRJ --- \pee \\
+        \> Caixa Postal 68504 --- CEP 21945--970 --- Rio de Janeiro --- RJ \\
+        \> e-mail: {\tt ramon@coep.ufrj.br} \qquad       Fax: 290-6626
+    \end{tabbing}
+    \end{small}}
+
+\newcommand{\meuendereco}{
+    \vfill
+    \noindent\rule[0mm]{\textwidth}{0.1mm}
+    {\scriptsize \sf
+    \begin{minipage}{1.5cm}
+        Endereço :
+    \end{minipage}
+    \begin{minipage}[t]{8.5cm}
+        \rrc\\
+        COPPE/UFRJ --- \pee\\
+        Caixa Postal 68504 --- CEP 21945--970 --- Rio de Janeiro --- RJ
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{4cm}
+        \begin{tabbing}
+        e-mail\ \= : {\tt ramon@coep.ufrj.br}\\
+        Fone    \> : 260-5010 r.267\\
+        Fax     \> : 290-6626
+        \end{tabbing}
+    \end{minipage}
+    }}
+
+\newcommand{\laranjeiras}{
+    \vfill
+    \noindent\rule[0mm]{\textwidth}{0.1mm}
+    {\scriptsize \sf
+    \begin{minipage}{1.5cm}
+        Endereço :
+    \end{minipage}
+    \begin{minipage}[t]{8.5cm}
+        \rrc\\
+        Rua das Laranjeiras, 192/201 \\
+        Laranjeiras, CEP 22240--001 --- Rio de Janeiro --- RJ
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{4cm}
+        \begin{tabbing}
+        e-mail\ \= : {\tt ramon@coep.ufrj.br}\\
+        Fone    \> : 2265-5520
+        Cel.    \> : 9355-8056
+        \end{tabbing}
+    \end{minipage}
+    }}
+
+\newcommand{\Liuendereco}{
+    \vfill
+    \noindent\rule[0mm]{16.5cm}{0.1mm}
+    {\scriptsize \sf
+    \begin{minipage}{1.5cm}
+        Endere\c{c}o :
+    \end{minipage}
+    \begin{minipage}[t]{8.5cm}
+        Liu Hsu\\
+        COPPE/UFRJ --- \pee\\
+        Caixa Postal 68504 --- CEP 21945--970 --- Rio de Janeiro --- RJ
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{4cm}
+        \begin{tabbing}
+        e-mail\ \= : {\tt liu@coep.ufrj.br}\\
+        Fax     \> : 290-6626
+        \end{tabbing}
+    \end{minipage}
+    }}
+
+\newcommand{\address}{
+    \vfill
+    \noindent\rule[0mm]{16.5cm}{0.1mm}
+    {\scriptsize \sf
+    \begin{minipage}{2.3cm}
+        Mailing address :
+    \end{minipage}
+    \begin{minipage}[t]{8.5cm}
+        \rrc\\
+        COPPE/UFRJ --- Department of Electrical Engineering \\
+        P.O. Box 68504 --- 21945--970 --- Rio de Janeiro --- BRAZIL
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{4cm}
+        \begin{tabbing}
+        e-mail\ \= : {\tt ramon@coep.ufrj.br}\\
+        Fax     \> : 055 21 290-6626
+        \end{tabbing}
+    \end{minipage}
+    }}
+
+\newcommand{\liuaddress}{
+    \vfill
+    \noindent\rule[0mm]{16.5cm}{0.1mm}
+    {\scriptsize \sf
+    \begin{minipage}{2.3cm}
+        Mailing address :
+    \end{minipage}
+    \begin{minipage}[t]{8.5cm}
+        Liu Hsu \\
+        COPPE/UFRJ --- Department of Electrical Engineering \\
+        P.O. Box 68504 --- 21945--970 --- Rio de Janeiro --- BRAZIL
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{4cm}
+        \begin{tabbing}
+        e-mail\ \= : {\tt liu@coep.ufrj.br}\\
+        Fax     \> : 290-6626
+        \end{tabbing}
+    \end{minipage}
+    }}
+
+\newcommand{\remetente}{
+    \vspace{3cm}
+    \parbox{15cm}{
+        \rrc \\
+        COPPE/UFRJ --- \pee \\
+        Caixa Postal 68.504 --- CEP 21.945--970 --- Rio de Janeiro --- RJ
+    }
+}
+
+\newcommand{\deliver}{
+    \vspace{3cm}
+    \parbox{15cm}{
+        \rrc \\
+        COPPE/UFRJ --- Department of Electrical Engineering \\
+        P. O. Box 68504 --- 21945--970 --- Rio de Janeiro --- BRAZIL
+    }
+}
+
+\newcommand{\astrom}{{\AA }str\"{o}m}
+\newcommand{\AeW}{\astrom\ \& Wittenmark}
+\newcommand{\AeH}{\astrom\ \& H\"agglund}
+
+\newcommand{\fim}{
+    \medskip
+    \begin{center}
+    \rule[1mm]{30mm}{0.14mm}$\diamond$\rule[1mm]{30mm}{0.14mm}
+    \end{center}}
+
+\newcommand{\DO}[1]{
+    \noindent
+    \makebox[8mm][l]{\bf Do }: \parbox[t]{15cm}{#1}
+
+    \smallskip}
+
+\newcommand{\AO}[1]{
+    \noindent
+    \makebox[8mm][l]{\bf Ao }: \parbox[t]{15cm}{#1}
+
+    }
+
+\newcommand{\AOS}[1]{
+    \noindent
+    \makebox[8mm][l]{\bf Aos}: \parbox[t]{15cm}{#1}
+
+    }
+
+\newcommand{\A}[1]{
+    \noindent
+    \makebox[8mm][l]{\bf \`A }: \parbox[t]{15cm}{#1}
+
+    }
+
+\newcommand{\ASSUNTO}[1]{
+    \vspace{8mm}
+    \noindent
+    \hfill {\bf Ref.:} {#1}
+
+    \vspace{5mm}
+    }
+
+\newcommand{\diretor}{
+    \vspace{1.5cm}
+    \hspace{7cm}
+    \parbox{7cm}{
+    \begin{center}
+        \rule[0mm]{6cm}{0.1mm} \\
+        \vspace{3mm}
+        Prof. Luiz Pinguelli Rosa \\
+        \vspace{3mm}
+        Diretor da COPPE
+    \end{center}}}
+
+%----------------------------------------------------------------------
